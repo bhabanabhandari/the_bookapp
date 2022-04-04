@@ -64,6 +64,7 @@ class _HomepageState extends State<Homepage> {
               ),
             ),
           ),
+
           expandedHeight: 50,
           flexibleSpace: FlexibleSpaceBar(background: Container()),
         ),
@@ -72,10 +73,52 @@ class _HomepageState extends State<Homepage> {
             padding: EdgeInsets.only(top: 20.0),
             child: ClipRRect(
               child: SingleChildScrollView(
-                scrollDirection: Axis.vertical,
+                scrollDirection: Axis.horizontal,
                 child: Container(
+                  child: Row(children: [
+                    Container(
+                      // margin: new EdgeInsets.symmetric(horizontal: 20.0),
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/harrypotter.jpg')),
+                      ),
+                      width: 300,
+                    ),
+                    Container(
+                      // margin: new EdgeInsets.symmetric(horizontal: 20.0),
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/radha.jpg')),
+                      ),
+                      width: 300,
+                    ),
+                    Container(
+                      //margin: new EdgeInsets.symmetric(horizontal: 20.0),
+                      decoration: BoxDecoration(
+                        image:
+                            DecorationImage(image: AssetImage('assets/1.jpg')),
+                      ),
+                      width: 300,
+                    ),
+                    Container(
+                      // margin: new EdgeInsets.symmetric(horizontal: 20.0),
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/radha.jpg')),
+                      ),
+                      width: 300,
+                    ),
+                    Container(
+                      //margin: new EdgeInsets.symmetric(horizontal: 20.0),
+                      decoration: BoxDecoration(
+                        image:
+                            DecorationImage(image: AssetImage('assets/1.jpg')),
+                      ),
+                      width: 300,
+                    ),
+                  ]),
                   height: 150,
-                  color: Colors.deepPurple,
+                  color: Color.fromARGB(255, 219, 202, 248),
                 ),
               ),
             ),
@@ -121,6 +164,16 @@ class _HomepageState extends State<Homepage> {
             textAlign: TextAlign.center,
           ),
           BottomNavyBarItem(
+            icon: Icon(
+              Icons.search,
+            ),
+            title: Text(
+              'Search',
+            ),
+            activeColor: Color.fromARGB(255, 201, 16, 170),
+            textAlign: TextAlign.center,
+          ),
+          BottomNavyBarItem(
             icon: Icon(Icons.menu_book),
             title: Text('Books'),
             activeColor: Color.fromARGB(255, 100, 80, 219),
@@ -133,17 +186,7 @@ class _HomepageState extends State<Homepage> {
             title: Text(
               'Notification',
             ),
-            activeColor: Color.fromARGB(255, 8, 77, 81),
-            textAlign: TextAlign.center,
-          ),
-          BottomNavyBarItem(
-            icon: Icon(
-              Icons.search,
-            ),
-            title: Text(
-              'Search',
-            ),
-            activeColor: Color.fromARGB(255, 188, 41, 207),
+            activeColor: Color.fromARGB(255, 9, 79, 107),
             textAlign: TextAlign.center,
           ),
           BottomNavyBarItem(
