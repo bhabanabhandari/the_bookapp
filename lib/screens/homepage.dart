@@ -133,7 +133,17 @@ class _HomepageState extends State<Homepage> {
             title: Text(
               'Notification',
             ),
-            activeColor: Color.fromARGB(255, 30, 30, 188),
+            activeColor: Color.fromARGB(255, 8, 77, 81),
+            textAlign: TextAlign.center,
+          ),
+          BottomNavyBarItem(
+            icon: Icon(
+              Icons.search,
+            ),
+            title: Text(
+              'Search',
+            ),
+            activeColor: Color.fromARGB(255, 188, 41, 207),
             textAlign: TextAlign.center,
           ),
           BottomNavyBarItem(
