@@ -28,7 +28,10 @@ class _SplashState extends State<Splash> {
     return Scaffold(
       body: Center(
           child: Container(
-        color: Colors.blue,
+        height: 150,
+        width: 150,
+        decoration: BoxDecoration(
+            image: DecorationImage(image: AssetImage('assets/book.png.png'))),
       )),
     );
   }

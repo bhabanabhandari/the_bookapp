@@ -30,23 +30,53 @@ class _HomepageState extends State<Homepage> {
     return Scaffold(
       body: CustomScrollView(slivers: [
         SliverAppBar(
+          floating: true,
+          // shape: RoundedRectangleBorder(
+          //   borderRadius: BorderRadius.vertical(
+          //     bottom: Radius.circular(30),
+          //   ),
+          // ),
           backgroundColor: Color.fromARGB(255, 26, 85, 127),
-          leading: Icon(Icons.menu_book),
-          title: Text("Dear Shyam,"),
-          expandedHeight: 100,
-          flexibleSpace: FlexibleSpaceBar(
-              background: Container(
-            color: Color.fromARGB(255, 132, 5, 48),
-          )),
+          leading: Padding(
+            padding: const EdgeInsets.only(left: 15.0, top: 10),
+            child: Container(
+              width: double.infinity,
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        height: 30,
+                        width: 30,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage('assets/profile.png')),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(100),
+                        ),
+                      ),
+                      // Text('Dear User,')
+                    ],
+                  )
+                ],
+              ),
+            ),
+          ),
+          expandedHeight: 50,
+          flexibleSpace: FlexibleSpaceBar(background: Container()),
         ),
         SliverToBoxAdapter(
           child: Padding(
-            padding: EdgeInsets.all(20.0),
+            padding: EdgeInsets.only(top: 20.0),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Container(
-                height: 400,
-                color: Colors.deepPurple,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Container(
+                  height: 150,
+                  color: Colors.deepPurple,
+                ),
               ),
             ),
           ),
