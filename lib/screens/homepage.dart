@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:justatry/colors/color.dart';
+import 'package:justatry/screens/navigation_drawer.dart';
+
+import '../colors/color.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -10,6 +13,7 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   int _currentIndex = 0;
   late PageController _pageController;
 
@@ -28,6 +32,12 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavigationDrawer(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: primary,
+        child: Icon(Icons.search),
+      ),
       body: CustomScrollView(slivers: [
         SliverAppBar(
           floating: true,
@@ -36,28 +46,38 @@ class _HomepageState extends State<Homepage> {
           //     bottom: Radius.circular(30),
           //   ),
           // ),
-          backgroundColor: Color.fromARGB(255, 26, 85, 127),
+          backgroundColor: primary,
           leading: Padding(
             padding: const EdgeInsets.only(left: 15.0, top: 10),
             child: Container(
-              width: double.infinity,
+              // width: double.infinity,
               child: Column(
                 children: [
                   Row(
-                    mainAxisSize: MainAxisSize.max,
+                    // mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(
-                        height: 30,
-                        width: 30,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage('assets/profile.png')),
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(100),
-                        ),
+                      Text('Dear User,'),
+                      GestureDetector(
+                        onTap: () => _scaffoldKey.currentState?.openDrawer(),
+                        child: Builder(builder: (context) {
+                          return GestureDetector(
+                            onTap: () {
+                              Scaffold.of(context).openDrawer();
+                            },
+                            child: Container(
+                              height: 30,
+                              width: 30,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage('assets/profile.png')),
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(100),
+                              ),
+                            ),
+                          );
+                        }),
                       ),
-                      // Text('Dear User,')
                     ],
                   )
                 ],
@@ -66,7 +86,10 @@ class _HomepageState extends State<Homepage> {
           ),
 
           expandedHeight: 50,
-          flexibleSpace: FlexibleSpaceBar(background: Container()),
+          flexibleSpace: FlexibleSpaceBar(
+              background: Container(
+            height: 200,
+          )),
         ),
         SliverToBoxAdapter(
           child: Padding(
@@ -85,7 +108,7 @@ class _HomepageState extends State<Homepage> {
                       width: 300,
                     ),
                     Container(
-                      // margin: new EdgeInsets.symmetric(horizontal: 20.0),
+                      //margin: new EdgeInsets.symmetric(horizontal: 20.0),
                       decoration: BoxDecoration(
                         image: DecorationImage(
                             image: AssetImage('assets/radha.jpg')),
