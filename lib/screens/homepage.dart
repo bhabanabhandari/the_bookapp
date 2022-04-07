@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:justatry/colors/color.dart';
-import 'package:justatry/screens/navigation_drawer.dart';
 
+import 'package:carousel_slider/carousel_slider.dart';
 import '../colors/color.dart';
+import 'navigation_drawer.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -40,24 +41,20 @@ class _HomepageState extends State<Homepage> {
       ),
       body: CustomScrollView(slivers: [
         SliverAppBar(
+          automaticallyImplyLeading: false,
+          snap: false,
+          pinned: false,
           floating: true,
-          // shape: RoundedRectangleBorder(
-          //   borderRadius: BorderRadius.vertical(
-          //     bottom: Radius.circular(30),
-          //   ),
-          // ),
+          expandedHeight: 70,
           backgroundColor: primary,
-          leading: Padding(
-            padding: const EdgeInsets.only(left: 15.0, top: 10),
-            child: Container(
-              // width: double.infinity,
-              child: Column(
-                children: [
-                  Row(
-                    // mainAxisSize: MainAxisSize.max,
+          leading: Container(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 15.0, left: 15),
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Dear User,'),
                       GestureDetector(
                         onTap: () => _scaffoldKey.currentState?.openDrawer(),
                         child: Builder(builder: (context) {
@@ -69,157 +66,467 @@ class _HomepageState extends State<Homepage> {
                               height: 30,
                               width: 30,
                               decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage('assets/profile.png')),
-                                color: Colors.white,
                                 borderRadius: BorderRadius.circular(100),
+                                image: DecorationImage(
+                                    fit: BoxFit.fill,
+                                    image: AssetImage('assets/profile.png')),
+                                //borderRadius: BorderRadius.circular(100),
                               ),
                             ),
                           );
                         }),
                       ),
                     ],
-                  )
-                ],
-              ),
+                  ),
+                )
+              ],
             ),
           ),
-
-          expandedHeight: 50,
-          flexibleSpace: FlexibleSpaceBar(
-              background: Container(
-            height: 200,
+          title: Text('Dear Shyam,'),
+          // expandedHeight: 50,
+        ),
+        SliverToBoxAdapter(
+            child: ClipRRect(
+          child: Padding(
+              padding: const EdgeInsets.only(left: 8.0, top: 8),
+              child: Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: Container(
+                  child: TextField(
+                      cursorHeight: 25,
+                      decoration: new InputDecoration(
+                        border: new OutlineInputBorder(
+                            borderSide: new BorderSide(color: Colors.blue)),
+                        prefixIcon: const Icon(
+                          Icons.search,
+                          color: Colors.blueAccent,
+                        ),
+                        // prefixText: ' ',
+                      )),
+                ),
+              )),
+        )),
+        SliverToBoxAdapter(
+          child: ClipRRect(
+              child: Padding(
+            padding: const EdgeInsets.only(left: 8.0, top: 8),
+            child: Text(
+              "Trending",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
           )),
         ),
         SliverToBoxAdapter(
-          child: Padding(
-            padding: EdgeInsets.only(top: 20.0),
-            child: ClipRRect(
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Container(
-                  child: Row(children: [
-                    Container(
-                      // margin: new EdgeInsets.symmetric(horizontal: 20.0),
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage('assets/harrypotter.jpg')),
-                      ),
-                      width: 300,
-                    ),
-                    Container(
-                      //margin: new EdgeInsets.symmetric(horizontal: 20.0),
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage('assets/radha.jpg')),
-                      ),
-                      width: 300,
-                    ),
-                    Container(
-                      //margin: new EdgeInsets.symmetric(horizontal: 20.0),
-                      decoration: BoxDecoration(
-                        image:
-                            DecorationImage(image: AssetImage('assets/1.jpg')),
-                      ),
-                      width: 300,
-                    ),
-                    Container(
-                      // margin: new EdgeInsets.symmetric(horizontal: 20.0),
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage('assets/radha.jpg')),
-                      ),
-                      width: 300,
-                    ),
-                    Container(
-                      //margin: new EdgeInsets.symmetric(horizontal: 20.0),
-                      decoration: BoxDecoration(
-                        image:
-                            DecorationImage(image: AssetImage('assets/1.jpg')),
-                      ),
-                      width: 300,
-                    ),
-                  ]),
-                  height: 150,
-                  color: Color.fromARGB(255, 219, 202, 248),
+          child: CarouselSlider(
+            items: [
+              Container(
+                // margin: new EdgeInsets.symmetric(horizontal: 20.0),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/harrypotter.jpg')),
                 ),
+                width: 300,
+              ),
+              Container(
+                //margin: new EdgeInsets.symmetric(horizontal: 20.0),
+                decoration: BoxDecoration(
+                  image: DecorationImage(image: AssetImage('assets/radha.jpg')),
+                ),
+                width: 300,
+              ),
+              Container(
+                //margin: new EdgeInsets.symmetric(horizontal: 20.0),
+                decoration: BoxDecoration(
+                  image: DecorationImage(image: AssetImage('assets/1.jpg')),
+                ),
+                width: 300,
+              ),
+              Container(
+                // margin: new EdgeInsets.symmetric(horizontal: 20.0),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/11 minutes.jpg')),
+                ),
+                width: 300,
+              ),
+              Container(
+                //margin: new EdgeInsets.symmetric(horizontal: 20.0),
+                decoration: BoxDecoration(
+                  image: DecorationImage(image: AssetImage('assets/radha.jpg')),
+                ),
+                width: 300,
+              ),
+            ],
+            options: CarouselOptions(
+              height: MediaQuery.of(context).size.height * 0.2,
+              aspectRatio: 16 / 9,
+              viewportFraction: 0.6,
+              initialPage: 0,
+              enableInfiniteScroll: true,
+              reverse: false,
+              autoPlay: true,
+              autoPlayInterval: Duration(seconds: 3),
+              autoPlayAnimationDuration: Duration(milliseconds: 800),
+              autoPlayCurve: Curves.fastOutSlowIn,
+              enlargeCenterPage: true,
+              //onPageChanged: callbackFunction,
+              scrollDirection: Axis.horizontal,
+            ),
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: ClipRRect(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 8.0, top: 8),
+              child: Text(
+                "Continue Reading",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: ClipRRect(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Container(
+                child: Row(children: [
+                  Container(
+                    margin: new EdgeInsets.symmetric(horizontal: 10.0),
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage('assets/harrypotter.jpg')),
+                    ),
+                    width: 150,
+                  ),
+                  Container(
+                    margin: new EdgeInsets.symmetric(horizontal: 5.0),
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage('assets/radha.jpg')),
+                    ),
+                    width: 150.0,
+                  ),
+                  Container(
+                    margin: new EdgeInsets.symmetric(horizontal: 5.0),
+                    decoration: BoxDecoration(
+                      image: DecorationImage(image: AssetImage('assets/1.jpg')),
+                    ),
+                    width: 150,
+                  ),
+                  Container(
+                    margin: new EdgeInsets.symmetric(horizontal: 5.0),
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage('assets/radha.jpg')),
+                    ),
+                    width: 150,
+                  ),
+                  Container(
+                    margin: new EdgeInsets.symmetric(horizontal: 5.0),
+                    decoration: BoxDecoration(
+                      image: DecorationImage(image: AssetImage('assets/1.jpg')),
+                    ),
+                    width: 150,
+                  ),
+                ]),
+                height: 100,
+              ),
+            ),
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: ClipRRect(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 8.0, top: 8),
+              child: Text(
+                "You Might Like",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
           ),
         ),
         SliverToBoxAdapter(
           child: Padding(
-            padding: EdgeInsets.all(20.0),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Container(
-                height: 400,
-                color: Colors.deepPurple,
+            padding: EdgeInsets.all(10.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Card(
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Column(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage('assets/harry.jpg')),
+                          ),
+                          width: MediaQuery.of(context).size.width * 0.20,
+                          height: MediaQuery.of(context).size.height * 0.18,
+                        ),
+                        Text('Harry potter')
+                      ],
+                    ),
+                  ),
+                ),
+                Card(
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/thekings.jpg')),
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.20,
+                      height: MediaQuery.of(context).size.height * 0.18,
+                      //color: Colors.blueAccent[400],
+                    ),
+                  ),
+                ),
+                Card(
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/memory.jpg')),
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.20,
+                      height: MediaQuery.of(context).size.height * 0.18,
+                      //color: Colors.blueAccent[400],
+                    ),
+                  ),
+                ),
+                Card(
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/me_before_you.jpg')),
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.20,
+                      height: MediaQuery.of(context).size.height * 0.18,
+                      //color: Colors.blueAccent[400],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: ClipRRect(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 8.0, top: 8),
+              child: Text(
+                "You Might Like",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
           ),
         ),
         SliverToBoxAdapter(
           child: Padding(
-            padding: EdgeInsets.all(20.0),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Container(
-                height: 400,
-                color: Colors.deepPurple,
-              ),
+            padding: EdgeInsets.all(10.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Card(
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/harry.jpg')),
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.20,
+                      height: MediaQuery.of(context).size.height * 0.18,
+                      //color: Colors.blueAccent[400],
+                    ),
+                  ),
+                ),
+                Card(
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/thekings.jpg')),
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.20,
+                      height: MediaQuery.of(context).size.height * 0.18,
+                      //color: Colors.blueAccent[400],
+                    ),
+                  ),
+                ),
+                Card(
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/memory.jpg')),
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.20,
+                      height: MediaQuery.of(context).size.height * 0.18,
+                      //color: Colors.blueAccent[400],
+                    ),
+                  ),
+                ),
+                Card(
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/me_before_you.jpg')),
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.20,
+                      height: MediaQuery.of(context).size.height * 0.18,
+                      //color: Colors.blueAccent[400],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: EdgeInsets.all(10.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Card(
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/harry.jpg')),
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.20,
+                      height: MediaQuery.of(context).size.height * 0.18,
+                      //color: Colors.blueAccent[400],
+                    ),
+                  ),
+                ),
+                Card(
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/thekings.jpg')),
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.20,
+                      height: MediaQuery.of(context).size.height * 0.18,
+                      //color: Colors.blueAccent[400],
+                    ),
+                  ),
+                ),
+                Card(
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/memory.jpg')),
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.20,
+                      height: MediaQuery.of(context).size.height * 0.18,
+                      //color: Colors.blueAccent[400],
+                    ),
+                  ),
+                ),
+                Card(
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/me_before_you.jpg')),
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.20,
+                      height: MediaQuery.of(context).size.height * 0.18,
+                      //color: Colors.blueAccent[400],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: EdgeInsets.all(10.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Card(
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/harry.jpg')),
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.20,
+                      height: MediaQuery.of(context).size.height * 0.18,
+                      //color: Colors.blueAccent[400],
+                    ),
+                  ),
+                ),
+                Card(
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/thekings.jpg')),
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.20,
+                      height: MediaQuery.of(context).size.height * 0.18,
+                      //color: Colors.blueAccent[400],
+                    ),
+                  ),
+                ),
+                Card(
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/memory.jpg')),
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.20,
+                      height: MediaQuery.of(context).size.height * 0.18,
+                      //color: Colors.blueAccent[400],
+                    ),
+                  ),
+                ),
+                Card(
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/me_before_you.jpg')),
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.20,
+                      height: MediaQuery.of(context).size.height * 0.18,
+                      //color: Colors.blueAccent[400],
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),
       ]),
-      backgroundColor: Colors.deepPurple[100],
-      bottomNavigationBar: BottomNavyBar(
-        selectedIndex: _currentIndex,
-        showElevation: true,
-        itemCornerRadius: 24,
-        curve: Curves.easeIn,
-        onItemSelected: (index) => setState(() => _currentIndex = index),
-        items: <BottomNavyBarItem>[
-          BottomNavyBarItem(
-            icon: Icon(Icons.home),
-            title: Text('Home'),
-            activeColor: primary,
-            textAlign: TextAlign.center,
-          ),
-          BottomNavyBarItem(
-            icon: Icon(
-              Icons.search,
-            ),
-            title: Text(
-              'Search',
-            ),
-            activeColor: Color.fromARGB(255, 201, 16, 170),
-            textAlign: TextAlign.center,
-          ),
-          BottomNavyBarItem(
-            icon: Icon(Icons.menu_book),
-            title: Text('Books'),
-            activeColor: Color.fromARGB(255, 100, 80, 219),
-            textAlign: TextAlign.center,
-          ),
-          BottomNavyBarItem(
-            icon: Icon(
-              Icons.notifications_none,
-            ),
-            title: Text(
-              'Notification',
-            ),
-            activeColor: Color.fromARGB(255, 9, 79, 107),
-            textAlign: TextAlign.center,
-          ),
-          BottomNavyBarItem(
-            icon: Icon(Icons.settings),
-            title: Text('Settings'),
-            activeColor: Color.fromARGB(255, 6, 8, 9),
-            textAlign: TextAlign.center,
-          ),
-        ],
-      ),
+      // // // backgroundColor: Color.fromARGB(255, 1, 0, 3),
     );
   }
 }

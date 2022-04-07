@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:justatry/colors/color.dart';
-import 'package:justatry/screens/homepage.dart';
+
+import 'package:justatry/screens/navigation_menu.dart';
 import 'package:justatry/screens/new_user_register.dart';
 
 class LoginPage extends StatefulWidget {
@@ -191,7 +192,9 @@ class _HomePageState extends State<LoginPage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => const Homepage()),
+                                        builder: (context) => const NavMenu(
+                                              title: '',
+                                            )),
                                   );
                                 },
                                 child: Text(

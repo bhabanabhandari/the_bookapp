@@ -10,7 +10,7 @@ class NavigationDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: Material(
-        color: Colors.black,
+        color: primary,
         child: Padding(
           padding: const EdgeInsets.fromLTRB(24.0, 80, 24, 0),
           child: Column(
@@ -22,7 +22,7 @@ class NavigationDrawer extends StatelessWidget {
               const Divider(
                 thickness: 1,
                 height: 10,
-                color: Colors.grey,
+                color: Colors.white,
               ),
               const SizedBox(
                 height: 40,
@@ -59,7 +59,7 @@ class NavigationDrawer extends StatelessWidget {
               const Divider(
                 thickness: 1,
                 height: 10,
-                color: Colors.grey,
+                color: Colors.white,
               ),
               const SizedBox(
                 height: 30,
